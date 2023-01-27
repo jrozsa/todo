@@ -39,8 +39,6 @@ export const AddTodoItem = () => {
   });
   const onSubmit: SubmitHandler<Inputs> = (data) => createTodoItem(data);
 
-  console.log(errors);
-
   return (
     <div className="flex flex-1 flex-col justify-center items-center gap-2">
       <h1 className="text-center">Add new todo item</h1>
@@ -53,8 +51,7 @@ export const AddTodoItem = () => {
               <Input
                 type="text"
                 placeholder="Name"
-                bordered
-                color={errors.title ? "error" : "primary"}
+                className={`${_.isEmpty(errors.title) ? "" : "input-error"}`}
                 {...field}
               />
             )}
@@ -65,7 +62,9 @@ export const AddTodoItem = () => {
             render={({ field }) => (
               <Textarea
                 placeholder="Description"
-                color={errors.description ? "error" : "primary"}
+                className={`${
+                  _.isEmpty(errors.description) ? "" : "input-error"
+                }`}
                 {...field}
               />
             )}
@@ -76,7 +75,7 @@ export const AddTodoItem = () => {
             render={({ field }) => (
               <Input
                 type="datetime-local"
-                color={errors.dueDate ? "error" : "primary"}
+                className={`${_.isEmpty(errors.dueDate) ? "" : "input-error"}`}
                 {...field}
               />
             )}

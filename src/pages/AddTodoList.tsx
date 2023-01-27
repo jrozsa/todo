@@ -43,8 +43,9 @@ export const AddTodoList = () => {
             <Input
               type="text"
               placeholder="Type here"
-              bordered
-              color={errors.name ? "error" : "primary"}
+              className={`input input-borderedinput input-bordered w-full max-w-xs ${
+                _.isEmpty(errors) ? "" : "input-error"
+              }`}
               {...field}
             />
           )}
