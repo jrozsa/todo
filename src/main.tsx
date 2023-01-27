@@ -8,26 +8,29 @@ import { TodoLists } from "../src/pages/TodoLists";
 import { AddTodoItem } from "./pages/AddTodoItem";
 import { AddTodoList } from "./pages/AddTodoList";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: ":id",
-        element: <TodoLists />,
-      },
-      {
-        path: "add",
-        element: <AddTodoList />,
-      },
-      {
-        path: ":id/addItem",
-        element: <AddTodoItem />,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          path: ":id",
+          element: <TodoLists />,
+        },
+        {
+          path: "add",
+          element: <AddTodoList />,
+        },
+        {
+          path: ":id/addItem",
+          element: <AddTodoItem />,
+        },
+      ],
+    },
+  ],
+  { basename: "/todo" }
+);
 
 const queryClient = new QueryClient();
 
