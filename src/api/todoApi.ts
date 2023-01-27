@@ -59,7 +59,7 @@ export const useCreateTodoList = () => {
  */
 const fetchAllTodoItemsInList = async (todoListId: string | undefined) => {
   if (!todoListId) {
-    return null;
+    return [];
   }
   const response = await fetch(BASE_PATH + `todoList/${todoListId}/todoItem`);
   return response.json();
