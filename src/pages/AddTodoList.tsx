@@ -32,8 +32,6 @@ export const AddTodoList = () => {
   });
   const onSubmit: SubmitHandler<Inputs> = (data) => createPost(data.name);
 
-  console.log(_.isEmpty(errors));
-
   return (
     <div className="flex flex-1 flex-col justify-center items-center gap-2">
       <h1 className="text-center">Add new todo list</h1>
@@ -45,9 +43,8 @@ export const AddTodoList = () => {
             <Input
               type="text"
               placeholder="Type here"
-              className={`input input-borderedinput input-bordered w-full max-w-xs ${
-                _.isEmpty(errors) || "input-error"
-              }`}
+              bordered
+              color={errors.name ? "error" : "primary"}
               {...field}
             />
           )}

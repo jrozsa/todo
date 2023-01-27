@@ -39,7 +39,6 @@ export const AddTodoItem = () => {
   });
   const onSubmit: SubmitHandler<Inputs> = (data) => createTodoItem(data);
 
-  // Add some feedback for inputs in error
   console.log(errors);
 
   return (
@@ -51,20 +50,36 @@ export const AddTodoItem = () => {
             name="title"
             control={control}
             render={({ field }) => (
-              <Input type="text" placeholder="Name" {...field} />
+              <Input
+                type="text"
+                placeholder="Name"
+                bordered
+                color={errors.title ? "error" : "primary"}
+                {...field}
+              />
             )}
           />
           <Controller
             name="description"
             control={control}
             render={({ field }) => (
-              <Textarea placeholder="Description" {...field} />
+              <Textarea
+                placeholder="Description"
+                color={errors.description ? "error" : "primary"}
+                {...field}
+              />
             )}
           />
           <Controller
             name="dueDate"
             control={control}
-            render={({ field }) => <Input type="datetime-local" {...field} />}
+            render={({ field }) => (
+              <Input
+                type="datetime-local"
+                color={errors.dueDate ? "error" : "primary"}
+                {...field}
+              />
+            )}
           />
         </div>
       </form>
